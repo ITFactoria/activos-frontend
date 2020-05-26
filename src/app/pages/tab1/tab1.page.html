@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+    </ion-buttons>
+
+    <ion-title>Cafe</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click) = "logout()" >
+        <ion-icon slot="icon-only" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+  
+  <!-- Refresher -->
+
+  <!-- Activos -->
+  <h5>Activos Propietario</h5>
+  <app-activos [activosPropietario]="activosPropietario"></app-activos>
+
+  <h5>Activos Técnico</h5>
+  <app-activos [activosTecnico]="activosTecnico"></app-activos>
+  
+
+
+  <!-- Infinite Scroll -->
+
+
+
+
+
+</ion-content>

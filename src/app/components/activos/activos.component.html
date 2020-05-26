@@ -1,0 +1,12 @@
+<ion-grid fixed>
+    <ion-row>
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+            *ngFor="let activoPropietario of activosPropietario">
+            <app-activo [activoPropietario]="activoPropietario"></app-activo>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+
+
+<!-- <app-activo *ngFor="let activoPropietario of activosPropietario" [activoPropietario]="activoPropietario"></app-activo> -->
