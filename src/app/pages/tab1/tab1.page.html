@@ -15,9 +15,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="light">
+
+  
+  
+  <!-- User Data -->
+  <app-usuario [datosUsuario] = "datosUsuario"></app-usuario>
+  
   
   <!-- Refresher -->
 
+  
   <!-- Activos -->
   <h5>Activos Propietario</h5>
   <app-activos [activosPropietario]="activosPropietario"></app-activos>
@@ -25,7 +32,6 @@
   <h5>Activos Técnico</h5>
   <app-activos [activosTecnico]="activosTecnico"></app-activos>
   
-
 
   <!-- Infinite Scroll -->
 

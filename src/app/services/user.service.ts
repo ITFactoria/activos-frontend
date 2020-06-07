@@ -27,7 +27,7 @@ export class UserService {
 
     return new Promise(resolve => {
 
-      this._activosService.getActivos(token).subscribe(res => {
+      this._activosService.getAsetsByUser(token).subscribe(res => {
         console.log("res: ", res);
         console.log('rol: ', res.rol);
 

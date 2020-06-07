@@ -1,8 +1,15 @@
 export interface RespuestaActivos {
   rol: number;
+  datCon: DatCon;
   actTec: ActTec[];
   actPro: ActPro[];
 }
+
+export interface DatCon {
+  idcontacto: number;
+  nombrecontacto: string;
+}
+
 
 export interface ActPro {
   idact: number;

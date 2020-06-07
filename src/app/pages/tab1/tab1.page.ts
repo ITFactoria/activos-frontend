@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivosService } from 'src/app/services/activos.service';
-import { ActTec } from "../../interfaces/interfaces";
-import { ActPro } from "../../interfaces/interfaces";
+import { ActTec, ActPro, DatCon } from "../../interfaces/interfaces";
 import { Storage } from '@ionic/storage';
 import { UserService } from 'src/app/services/user.service';
+import { NavParams } from '@ionic/angular';
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-tab1',
@@ -14,37 +15,33 @@ export class Tab1Page implements OnInit {
 
   //activosTecnico : ActTec[] =[];
   activosPropietario: ActPro[] = [];
+  datosUsuario : DatCon;
 
 
   constructor(
-    private _activoService: ActivosService, 
+    private _activoService: ActivosService,
     private _storage: Storage,
-    private _userService: UserService) { }
+    private _userService: UserService,
+    private _router: Router,
+    private _activateRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    /*this._activoService.getActivos('').subscribe( res=>{
-      console.log("res: ", res);
-      console.log("resactivotecnico: ", res.actTec);
-      this.activosTecnico.push(...res.actTec);
-      console.log("activostecpush: ", this.activosTecnico);
-      console.log("resactivopropietario: ", res.actPro);
-      
-      this.activosPropietario.push(...res.actPro);
-      console.log("activosproppush: ", this.activosPropietario);
-      
-    })
-    */
-    console.log("TAB1-oninit");
+   
+    this.loadUserData();
     this.loadAssets();
+    console.log("TAB1: dataUser: ", this.datosUsuario);
     console.log("TAB1: activospropderr: ", this.activosPropietario);
+  }
+
+  async loadUserData() {
+    this.datosUsuario = (await this._storage.get('datosUsuario')) || [];
   }
 
   async loadAssets() {
     this.activosPropietario = (await this._storage.get('activosPropietario')) || [];
-
   }
 
-  logout(){
+  logout() {
     this._userService.logout();
   }
 

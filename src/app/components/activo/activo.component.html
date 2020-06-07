@@ -1,27 +1,8 @@
-<!-- <p>
-  ActTec: {{activoTecnico.nombreactivo}}
-</p> -->
-<!-- <p>
-  ActPro: {{activoPropietario.nombreactivo}}
-</p> -->
-
-<!-- <div>
-    <ion-item>
-      <ion-label>
-        <h3>Cartagena</h3>
-        <h5>cgena</h5>
-      </ion-label>
-      <ion-label>
-        <h3>Barranquilla</h3>
-        <h5>cgena</h5>
-      </ion-label>
-    </ion-item>
-</div> -->
 
 <div>
   <ion-list>
     <ion-item-sliding>
-      <ion-item lines="none">
+      <ion-item button (click) ="seeAssetDetail(activoPropietario.idact)" lines="none">
         <ion-label>
           {{activoPropietario.nombreactivo}}
         </ion-label>

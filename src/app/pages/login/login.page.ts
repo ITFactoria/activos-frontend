@@ -3,9 +3,10 @@ import { NgForm } from '@angular/forms';
 import { IonSlides, NavController } from '@ionic/angular';
 import { ActivosService } from 'src/app/services/activos.service';
 import { UtilsService } from 'src/app/services/utils.service';
-import { ActPro, ActTec } from 'src/app/interfaces/interfaces';
+import { ActPro, ActTec, DatCon } from 'src/app/interfaces/interfaces';
 import { Storage } from '@ionic/storage';
 import { UserService } from 'src/app/services/user.service';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
 
   activosPropietario: ActPro[] = [];
   activosTecnico: ActTec[] = [];
+  datosUsuario: DatCon
 
 
   constructor(
@@ -30,7 +32,8 @@ export class LoginPage implements OnInit {
     private _navcrtl: NavController,
     private _utilsService: UtilsService,
     private _storage: Storage,
-    private _userService: UserService) { }
+    private _userService: UserService,
+    private _router: Router) { }
 
   ngOnInit() {
     //this.slide.lockSwipes(true);
@@ -38,16 +41,16 @@ export class LoginPage implements OnInit {
 
   login(frmLogin: NgForm) {
 
-    if (frmLogin.invalid) { 
+    if (frmLogin.invalid) {
       this._utilsService.informativeAlert("Token inválido");
-      return; }
+      return;
+    }
 
-    console.log("estado forma: ", frmLogin.valid);
-    console.log("token: ", this.loginUser.token);
-
-    this._activosService.getActivos(this.loginUser.token).subscribe(res => {
+    
+    this._activosService.getAsetsByUser(this.loginUser.token).subscribe(res => {
       console.log("res: ", res);
       console.log('rol: ', res.rol);
+      console.log("datacon", res.datCon);
 
       if (res.rol == 0) {
         //token invalido
@@ -55,23 +58,28 @@ export class LoginPage implements OnInit {
       }
       else {
         //token valido
+        this.datosUsuario = res.datCon;
         this.activosPropietario.push(...res.actPro);
         this.activosTecnico.push(...res.actTec);
+        
+        this.saveUserData(this.datosUsuario);
         this.saveAssets(this.activosPropietario);
-        this._navcrtl.navigateRoot('main/tabs/tab1', { animated: true });
+        this._navcrtl.navigateRoot(['main/tabs/tab1', this.datosUsuario], { animated: true });
+        //this._navcrtl.navigateForward(['main/tabs/tab1', this.datosUsuario], { animated: true });
+
+        
+        //this._router.navigate(['main/tabs/tab1', nombreContacto])
+
       }
     })
   }
 
+  async saveUserData(datosUsuario: DatCon) {
+    await this._storage.set('datosUsuario', datosUsuario);
+  }
+
   async saveAssets(activosPropietario: ActPro[]) {
-
-    this.activosPropietario = activosPropietario;
-    //this.activosTecnico = activosTecnico;
-
-    await this._storage.set('activosPropietario', this.activosPropietario);
-    console.log("save activos prop: ", this.activosPropietario)
-
-
+    await this._storage.set('activosPropietario', activosPropietario);
   }
 
 
@@ -110,7 +118,7 @@ export class LoginPage implements OnInit {
 
 
 
-  
+
 
 
 }
