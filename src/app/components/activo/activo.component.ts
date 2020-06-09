@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActTec } from "../../interfaces/interfaces";
+import { ActTec, DatCon } from "../../interfaces/interfaces";
 import { ActPro } from "../../interfaces/interfaces";
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class ActivoComponent implements OnInit {
   //@Input() activoTecnico: ActTec;
   @Input() activoPropietario: ActPro;
   
+  
   constructor(private _router: Router) { }
 
 
@@ -23,8 +24,11 @@ export class ActivoComponent implements OnInit {
   }
 
   seeAssetDetail(idActivo : string){
-    console.log("Detail Activo: ", idActivo);
-    this._router.navigate(['detalle-activo'])
+    console.log("ACTIVO Activo: ", this.activoPropietario);
+    console.log("ACTIVO Detail Activo: ", idActivo);
+    
+    this._router.navigate(['detalle-activo', idActivo]);
+    
     
 
   }

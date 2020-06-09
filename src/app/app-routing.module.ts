@@ -15,8 +15,12 @@ const routes: Routes = [
     pathMatch: 'full', redirectTo: 'login'
   },
   {
-    path: 'detalle-activo',
+    path: 'detalle-activo/:idActivo',
     loadChildren: () => import('./pages/detalle-activo/detalle-activo.module').then(m => m.DetalleActivoPageModule)
+  },
+  {
+    path: 'partes-activo',
+    loadChildren: () => import('./pages/partes-activo/partes-activo.module').then( m => m.PartesActivoPageModule)
   }
 
 ];

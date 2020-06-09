@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActTec } from "../../interfaces/interfaces";
+import { ActTec, DatCon } from "../../interfaces/interfaces";
 import { ActPro } from "../../interfaces/interfaces";
 
 
@@ -12,6 +12,7 @@ export class ActivosComponent implements OnInit {
 
   //@Input() activosTecnico : ActTec[] = [];
   @Input() activosPropietario : ActPro[] = [];
+
   
 
   constructor() { }
@@ -19,6 +20,7 @@ export class ActivosComponent implements OnInit {
   ngOnInit() {
     //console.log("ACTIVOS ActivosTecnico: ", this.activosTecnico);
     console.log("ACTIVOS ActivosPropietario: ", this.activosPropietario);
+    
     
   }
 

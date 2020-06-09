@@ -8,11 +8,17 @@ import { DatCon } from 'src/app/interfaces/interfaces';
 })
 export class UsuarioComponent implements OnInit {
 
-  @Input() datosUsuario : DatCon;
-  
+  @Input() datosUsuario: DatCon ={
+    idcontacto : null,
+    nombrecontacto : ""
+  };
+
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("USUARIO dataUsuario: ", this.datosUsuario.nombrecontacto );
+
+  }
 
 }

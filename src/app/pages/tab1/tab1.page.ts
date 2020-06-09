@@ -15,7 +15,11 @@ export class Tab1Page implements OnInit {
 
   //activosTecnico : ActTec[] =[];
   activosPropietario: ActPro[] = [];
-  datosUsuario : DatCon;
+  datosUsuario: DatCon = {
+    idcontacto: null,
+    nombrecontacto: ""
+  };
+
 
 
   constructor(
@@ -25,16 +29,28 @@ export class Tab1Page implements OnInit {
     private _router: Router,
     private _activateRoute: ActivatedRoute) { }
 
+
+  
   ngOnInit() {
-   
+    //this.loadData();
     this.loadUserData();
     this.loadAssets();
+
+
     console.log("TAB1: dataUser: ", this.datosUsuario);
     console.log("TAB1: activospropderr: ", this.activosPropietario);
   }
 
+  async loadData() {
+    await this.loadUserData();
+    await this.loadAssets();
+  }
+
+
+
   async loadUserData() {
     this.datosUsuario = (await this._storage.get('datosUsuario')) || [];
+    console.log("datos usuario async: ", this.datosUsuario);
   }
 
   async loadAssets() {

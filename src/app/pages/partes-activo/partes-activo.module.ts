@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetalleActivoPageRoutingModule } from './detalle-activo-routing.module';
+import { PartesActivoPageRoutingModule } from './partes-activo-routing.module';
 
-import { DetalleActivoPage } from './detalle-activo.page';
+import { PartesActivoPage } from './partes-activo.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    DetalleActivoPageRoutingModule,
+    PartesActivoPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [DetalleActivoPage]
+  declarations: [PartesActivoPage]
 })
-export class DetalleActivoPageModule {}
+export class PartesActivoPageModule {}
