@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
 
     <ion-title>Cafe</ion-title>
@@ -23,7 +23,6 @@
       </ion-label>
     </ion-item>
 
-
     <!-- Images -->
     <ion-slides pager="true">
       <ion-slide class="image-slide" style="background-image: url('{{activo.datact.idimgp}}')">
@@ -44,11 +43,12 @@
       </div>
     </ion-item>
 
-
     <!-- <app-mapa [activo]="activo"></app-mapa> -->
 
+    
     <!-- Part List -->
-    <app-partes-activo [partesActivo]="partesActivo"></app-partes-activo>
-  
+    <app-partes-activo [idActivo]="idActivo" [partesActivo]="partesActivo"></app-partes-activo>
+    <!-- <app-partes-activo [activo]="activo"></app-partes-activo> -->
+
   </div>
 </ion-content>

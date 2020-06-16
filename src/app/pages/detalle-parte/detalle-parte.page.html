@@ -15,23 +15,26 @@
 </ion-header>
 
 <ion-content>
-  <!-- List of Text Items -->
-<ion-list>
-  <ion-item>
-    <ion-label>Pokémon Yellow</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Mega Man X</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>The Legend of Zelda</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Pac-Man</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Super Mario World</ion-label>
-  </ion-item>
-</ion-list>
+
+  <ion-label>
+    <h2>Caracteristicas</h2>
+  </ion-label>
+
+  <!-- Images -->
+  <ion-slides pager="true">
+    <ion-slide class="image-slide" style="background-image: url('../../../assets/img/motor.jpeg')">
+    </ion-slide>
+  </ion-slides>
+
+  
+  <!-- List of Caracteristicas -->
+  <ion-list>
+    <ion-item *ngFor="let caracteristica of caracteristicas">
+      <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+      <ion-label>{{caracteristica.nombre}}</ion-label>
+      <ion-label>{{caracteristica.valor}}</ion-label>
+
+    </ion-item>
+  </ion-list>
 
 </ion-content>

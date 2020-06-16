@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ITipcar } from 'src/app/interfaces/interfaces';
+import { ITipcar, IActivo } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-partes-activo',
@@ -8,12 +8,19 @@ import { ITipcar } from 'src/app/interfaces/interfaces';
 })
 export class PartesActivoComponent implements OnInit {
 
-  @Input() partesActivo: ITipcar;
-
+  
   constructor() { }
 
+  @Input() idActivo: string;
+  @Input() partesActivo: ITipcar;
+
   ngOnInit() {
-    console.log("PARTESACTIVOCOMPONENT: ", this.partesActivo);
+    
+    console.log("PARTESACTIVOCOMPONENT idactivo: ", this.idActivo);
+    console.log("PARTESACTIVOCOMPONENT partes: ", this.partesActivo);
+    
+    //console.log("PARTESACTIVOCOMPONENT: ", this.activo.tipcar);
+    
   }
 
 }

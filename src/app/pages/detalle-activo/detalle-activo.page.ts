@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { detalleActivo, tipoCaracteristica, caracteristica, alerta, ICarTcar, ITipcar, IDatact, IActivo, } from 'src/app/interfaces/interfaces';
+import { ICarTcar, ITipcar, IDatact, IActivo, } from 'src/app/interfaces/interfaces';
 import { ActivoService } from 'src/app/services/activo.service';
+import { UserService } from 'src/app/services/user.service';
 
 declare var mapboxgl: any;
 
@@ -14,6 +15,7 @@ declare var mapboxgl: any;
 export class DetalleActivoPage implements OnInit {
 
   partesActivo: ITipcar[] =[];
+  idActivo: string;
 
 
   //Caracteristica: Caraceristica del Tipo Caracterisitica
@@ -100,7 +102,8 @@ export class DetalleActivoPage implements OnInit {
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _activoService: ActivoService) { }
+    private _activoService: ActivoService,
+    private _userService: UserService ) { }
 
 
 
@@ -115,8 +118,9 @@ export class DetalleActivoPage implements OnInit {
       console.log("RESP GETCOMPONENTIDACTIVO: ", this.activo)
 
       //Set images
-      this.activo.datact.idimgp = '../assets/icon/image1.png'
-      this.activo.datact.idimgd = '../assets/icon/image2.png'
+      this.activo.datact.idimgp = '../assets/img/desplumadora.jpg'
+      this.activo.datact.idimgd = '../assets/img/desplumadora2.jpeg'
+      
 
 
       //Set Map
@@ -135,8 +139,12 @@ export class DetalleActivoPage implements OnInit {
 
       //Set Parts
 
+      this.idActivo = this.activo.datact.idactivo;
+      console.log("DETALLE_ACTIVO SHARED Activo= ", idActivo);
+      
       this.partesActivo.push(...res.tipcar) ;
-      console.log("DETALLE_ACTIVO partesActivo= ", this.partesActivo);
+      console.log("DETALLE_ACTIVO SHARED partesActivo= ", this.partesActivo);
+      
 
 
 
@@ -169,6 +177,11 @@ export class DetalleActivoPage implements OnInit {
   getPartDetail() {
     console.log("part detail");
     this._router.navigate(['partes-activo']);
+
+  }
+
+  logout(){
+    this._userService.logout();
 
   }
 

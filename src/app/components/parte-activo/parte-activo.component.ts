@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ParteActivoComponent implements OnInit {
 
+  @Input() idActivo: string
   @Input() parteActivo : ITipcar
 
   constructor(private _router: Router) { }
@@ -16,8 +17,12 @@ export class ParteActivoComponent implements OnInit {
   ngOnInit() {}
 
   getPartDetail(){
-    console.log("Get Component");
-    this._router.navigate(['detalle-parte'])
+    console.log("PARTEACTIVO idactivo", this.idActivo);
+    console.log("PARTEACTIVO parteactivo", this.parteActivo);
+    console.log("PARTEACTIVO idparteactivo", this.parteActivo.idtipoc);
+    
+    
+    this._router.navigate(['detalle-parte',this.idActivo, this.parteActivo.idtipoc]);
 
 
   }

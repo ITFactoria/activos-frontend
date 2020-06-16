@@ -96,7 +96,7 @@ export interface ITipcar {
   indice: string;
   codtipc: string;
   nomtipc: string;
-  idimgtc: number;
+  idimgtc: string;
   carTcar: ICarTcar[];
   aleTcar: number;
 }
