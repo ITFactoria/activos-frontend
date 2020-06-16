@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'partes-activo',
     loadChildren: () => import('./pages/partes-activo/partes-activo.module').then( m => m.PartesActivoPageModule)
+  },
+  {
+    path: 'detalle-parte',
+    loadChildren: () => import('./pages/detalle-parte/detalle-parte.module').then( m => m.DetallePartePageModule)
   }
 
 ];

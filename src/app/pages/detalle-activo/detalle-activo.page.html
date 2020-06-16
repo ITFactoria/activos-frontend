@@ -19,15 +19,16 @@
   <div class="asset">
     <ion-item>
       <ion-label>
-        <h2>{{detalleActivo.nombreactivo}}</h2>
+        <h2>{{activo.datact.nomact}}</h2>
       </ion-label>
     </ion-item>
 
+
     <!-- Images -->
     <ion-slides pager="true">
-      <ion-slide class="image-slide" style="background-image: url('{{detalleActivo.idimgp}}')">
+      <ion-slide class="image-slide" style="background-image: url('{{activo.datact.idimgp}}')">
       </ion-slide>
-      <ion-slide class="image-slide" style="background-image: url('{{detalleActivo.idimgd}}')">
+      <ion-slide class="image-slide" style="background-image: url('{{activo.datact.idimgd}}')">
       </ion-slide>
 
     </ion-slides>
@@ -37,54 +38,17 @@
       <ion-label>Ubicacion</ion-label>
     </ion-item>
 
-    <app-mapa [detalleActivo]="detalleActivo"></app-mapa>
-
-    <!-- Part List -->
-    <ion-list>
-      <ion-list-header lines="inset">
-        <ion-label>Componentes</ion-label>
-      </ion-list-header>
-      <ion-item-sliding>
-        <ion-item button (click) ="getPartDetail()" lines="none">
-          <ion-avatar slot="start">
-            <img src="/assets/avatars/av-3.png">
-          </ion-avatar>
-          <ion-label>codigo</ion-label>
-          <ion-label>indice</ion-label>
-          <ion-label>motor</ion-label>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option (click)="getPartDetail(item)">Unread</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-      <ion-item-sliding>
-        <ion-item button (click) ="getPartDetail()" lines="none">
-          <ion-avatar slot="start">
-            <img src="/assets/avatars/av-3.png">
-          </ion-avatar>
-          <ion-label>codigo</ion-label>
-          <ion-label>indice</ion-label>
-          <ion-label>motor</ion-label>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option (click)="getPartDetail(item)">Unread</ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-
-
-    </ion-list>
-
-    <!-- Observations -->
-    <ion-item lines="none">
-      <ion-label text-wrap>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam debitis eum, autem itaque sit eligendi rem,
-        maxime minima natus nisi officia reiciendis officiis iure aliquid odit? Tenetur dolore quibusdam ut?
-
-      </ion-label>
+    <ion-item>
+      <div id='map'>
+        aqui debe estar el mapa
+      </div>
     </ion-item>
 
 
+    <!-- <app-mapa [activo]="activo"></app-mapa> -->
 
+    <!-- Part List -->
+    <app-partes-activo [partesActivo]="partesActivo"></app-partes-activo>
+  
   </div>
-
 </ion-content>

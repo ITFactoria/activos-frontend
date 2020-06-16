@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ITipcar } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-partes-activo',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartesActivoComponent implements OnInit {
 
+  @Input() partesActivo: ITipcar;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("PARTESACTIVOCOMPONENT: ", this.partesActivo);
+  }
 
 }

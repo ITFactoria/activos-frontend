@@ -7,7 +7,6 @@ import { ActivosService } from './activos.service';
 const HOST = environment.url;
 
 
-
 @Injectable({
   providedIn: 'root'
 })

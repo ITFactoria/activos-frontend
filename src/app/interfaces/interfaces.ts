@@ -69,3 +69,41 @@ export interface alerta {
   ffin: string
   nrodias: number
 }
+
+
+//Nuevas interfaces
+export interface IActivo {
+  val: number;
+  datact: IDatact;
+  tipcar: ITipcar[];
+}
+
+//Datos del Activo
+export interface IDatact {
+  idactivo: string;
+  codact: string;
+  nomact: string;
+  idimgp: string;
+  idimgd: string;
+  fecgar: string;
+  latact: string;
+  lonact: string;
+}
+
+//Tipo Caracteristica: Componente o Parte del Activo
+export interface ITipcar {
+  idtipoc: number;
+  indice: string;
+  codtipc: string;
+  nomtipc: string;
+  idimgtc: number;
+  carTcar: ICarTcar[];
+  aleTcar: number;
+}
+
+//Caracteristica: Caraceristica del Tipo Caracterisitica
+export interface ICarTcar {
+  idcar: number;
+  nombre: string;
+  valor: string;
+}

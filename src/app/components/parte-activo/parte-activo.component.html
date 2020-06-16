@@ -1,3 +1,32 @@
-<p>
-  parte-activo works!
-</p>
+<div class="part">
+
+  <ion-label>
+    <h2>Componentes</h2>
+  </ion-label>
+
+  <ion-list>
+
+    <!-- <ion-list-header lines="inset">
+      <ion-label>Componentes</ion-label>
+    </ion-list-header> -->
+
+    <ion-item button (click)="getPartDetail()" lines="none">
+
+      <ion-thumbnail slot="start">
+        <ion-img src="/assets/img/motor.jpeg"></ion-img>
+      </ion-thumbnail>
+
+      <ion-label>
+        <h4>Indice: {{parteActivo.indice}} Codigo: {{parteActivo.codtipc}}</h4>
+        <h4>Nombre: {{parteActivo.nomtipc}}</h4>
+      </ion-label>
+
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option (click)="getPartDetail(item)">Unread</ion-item-option>
+    </ion-item-options>
+
+  </ion-list>
+
+
+</div>

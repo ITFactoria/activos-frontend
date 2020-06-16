@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { detalleActivo, tipoCaracteristica, caracteristica, alerta } from 'src/app/interfaces/interfaces';
+import { detalleActivo, tipoCaracteristica, caracteristica, alerta, ICarTcar, ITipcar, IDatact, IActivo, } from 'src/app/interfaces/interfaces';
+import { ActivoService } from 'src/app/services/activo.service';
+
+declare var mapboxgl: any;
+
 
 @Component({
   selector: 'app-detalle-activo',
@@ -9,8 +13,51 @@ import { detalleActivo, tipoCaracteristica, caracteristica, alerta } from 'src/a
 })
 export class DetalleActivoPage implements OnInit {
 
+  partesActivo: ITipcar[] =[];
+
+
+  //Caracteristica: Caraceristica del Tipo Caracterisitica
+  carTcar: ICarTcar = {
+    idcar: null,
+    nombre: '',
+    valor: ''
+  }
+
+  //Tipo Caracteristica: Componente o Parte del Activo
+  tipCar: ITipcar = {
+    idtipoc: null,
+    indice: '',
+    codtipc: '',
+    nomtipc: '',
+    idimgtc: null,
+    carTcar: this.carTcar[0],
+    aleTcar: null
+  }
+
+  //Datos del Activo
+  datAct: IDatact = {
+    idactivo: '',
+    codact: '',
+    nomact: '',
+    idimgp: '../../assets/icon/image1.png',
+    idimgd: '../../../assets/icon/image2.png',
+    fecgar: '',
+    latact: '',
+    lonact: ''
+  }
+
+  activo: IActivo = {
+    val: null,
+    datact: this.datAct,
+    tipcar: this.tipCar[0]
+  }
+
+  latitud: string;
+
+
+
   //Alerta sobre un Componente del activo
-  alerta: alerta = {
+  /*alerta: alerta = {
     idalerta: 0,
     aviso: '',
     finicio: '',
@@ -47,16 +94,58 @@ export class DetalleActivoPage implements OnInit {
     longitud: '121.473701',
     direccion: 'la estrella',
     tipoCaracteristicas: this.tipoCaracteristica[0]
-  }
+  }*/
 
 
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
+    private _activoService: ActivoService) { }
 
-  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
+
 
   ngOnInit() {
 
     let idActivo = this._activatedRoute.snapshot.paramMap.get('idActivo');
+
     console.log("INIT DETAIL idActivo: ", idActivo);
+
+    this._activoService.getActivo(idActivo).subscribe(res => {
+      this.activo = res;
+      console.log("RESP GETCOMPONENTIDACTIVO: ", this.activo)
+
+      //Set images
+      this.activo.datact.idimgp = '../assets/icon/image1.png'
+      this.activo.datact.idimgd = '../assets/icon/image2.png'
+
+
+      //Set Map
+      mapboxgl.accessToken = 'pk.eyJ1Ijoiam5pbm9pdGZhY3RvcmlhIiwiYSI6ImNrYXd5dTM0eDAxYWcyc2x3cGJiaXFkZngifQ.XnNxv87OQK8EJPcJ-DpTaA';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [this.activo.datact.lonact, this.activo.datact.latact],
+        zoom: 15
+
+      });
+
+      const marker = new mapboxgl.Marker()
+        .setLngLat([this.activo.datact.lonact, this.activo.datact.latact])
+        .addTo(map);
+
+      //Set Parts
+
+      this.partesActivo.push(...res.tipcar) ;
+      console.log("DETALLE_ACTIVO partesActivo= ", this.partesActivo);
+
+
+
+    })
+
+
+
+
+    //this.getComponents(idActivo);
 
     /*this._activatedRoute.queryParams.subscribe(params =>{
       let idActivo = params.get['idActivo']
@@ -64,18 +153,20 @@ export class DetalleActivoPage implements OnInit {
     })*/
 
 
-  }
-
-  getComponents(item: string) {
-    console.log("Part Detail");
-    console.log("Commponenets: ", this.detalleActivo.tipoCaracteristicas);
-
-    console.log("Commponenets: ", this.detalleActivo.tipoCaracteristicas[0].codtipc);
-    console.log("Commponenets: ", this.detalleActivo.tipoCaracteristicas[0].nomtipc);
 
   }
 
-  getPartDetail(){
+  getComponents(idActivo: string) {
+    console.log("GETCOMMPONENTS idActivo");
+    this._activoService.getActivo(idActivo).subscribe(res => {
+      console.log("RESP GETCOMPONENT: ", res)
+      this.activo = res;
+    })
+
+  }
+
+
+  getPartDetail() {
     console.log("part detail");
     this._router.navigate(['partes-activo']);
 
