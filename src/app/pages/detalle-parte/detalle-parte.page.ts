@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ActivoService } from 'src/app/services/activo.service';
-import { IActivo, ICarTcar, ITipcar } from 'src/app/interfaces/interfaces';
+import { IActivo, ICarTcar, ITipcar, IAlerta } from 'src/app/interfaces/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -13,11 +13,23 @@ export class DetallePartePage implements OnInit {
 
   activo: IActivo;
   partes: ITipcar[] =[];
-  parte: ITipcar;
   caracteristicas : ICarTcar[];
   caracteristica : ICarTcar;
   idActivo: string;
   idParte: string;
+  alertas: IAlerta[];
+  
+  //parte: ITipcar;
+
+  parte: ITipcar = {
+    idtipoc: null,
+    indice: '',
+    codtipc: '',
+    nomtipc: '',
+    idimgtc: null,
+    carTcar: this.caracteristicas,
+    aleTcar: null
+  }
   
   constructor( 
     private _userService: UserService, 
@@ -40,45 +52,26 @@ export class DetallePartePage implements OnInit {
     this._activoService.getActivo(idActivo).subscribe(res=>{
       console.log("GETPARTESACTIVO res: ", res);
       this.activo = res;
-      console.log("DETALLE PARTE activo: ", this.activo);
-      console.log("DETALLE PARTE tiposcarectaristicas: ", this.activo.tipcar);
       this.partes.push(...this.activo.tipcar);
 
       this.parte = this.partes.find(p => p.idtipoc === Number(this.idParte));
+      this.caracteristicas = this.parte.carTcar;
+
       console.log("DETALLE PARTE Parte encontrada: ", this.parte);
       console.log("DETALLE PARTE Caracteristicas: ", this.parte.carTcar);
-      this.caracteristicas = this.parte.carTcar;
+     
 
       //Images
       let imagen = "../../../assets/img/motor.jpeg"
       //this.activo.datact.idimgp = '../assets/img/desplumadora.jpg'
       //this.parte.idimgtc = "../../../assets/img/motor.jpeg"
       
-
-
-      
-      //this.caracteristicas.push(this.parte.carTcar) ;
-      //console.log("DETALLE PARTE Parte encontrada: ", this.caracteristica);
-
-
-
-
-
-      
-      
-
-
-      //this.caracteristicas.push(...res.tipcar)
-
-
+      //Alertas
+      this.alertas = this.parte.aleTcar;
     })
-
-    
-
-
-
   }
 
+  
   logout(){
     this._userService.logout()
   }

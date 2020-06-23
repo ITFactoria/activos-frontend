@@ -14,27 +14,58 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
 
-  <ion-label>
-    <h2>Caracteristicas</h2>
-  </ion-label>
+  <div class="caracterisiticas">
 
-  <!-- Images -->
-  <ion-slides pager="true">
-    <ion-slide class="image-slide" style="background-image: url('../../../assets/img/motor.jpeg')">
-    </ion-slide>
-  </ion-slides>
-
-  
-  <!-- List of Caracteristicas -->
-  <ion-list>
-    <ion-item *ngFor="let caracteristica of caracteristicas">
-      <ion-icon name="checkmark-outline" slot="start"></ion-icon>
-      <ion-label>{{caracteristica.nombre}}</ion-label>
-      <ion-label>{{caracteristica.valor}}</ion-label>
-
+    <ion-item>
+      <ion-label>
+        <h1>{{parte.nomtipc}}</h1>
+      </ion-label>
     </ion-item>
-  </ion-list>
+
+    <!-- Images -->
+    <ion-slides pager="true">
+      <ion-slide class="image-slide" style="background-image: url('../../../assets/img/motor.jpeg')">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-item>
+      <ion-label>
+        <h2>Caracteristicas</h2>
+      </ion-label>
+    </ion-item>
+   
+    <!-- Caracteristicas -->
+    <ion-list>
+      <ion-item *ngFor="let caracteristica of caracteristicas">
+        <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+        <ion-label>{{caracteristica.nombre}}</ion-label>
+        <ion-label>{{caracteristica.valor}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Alertas -->
+    <ion-item>
+      <ion-label>
+        <h2>Alertas</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ion-item *ngFor="let alerta of alertas">
+        <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+        <ion-label>{{alerta.aviso}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+
+    
+
+  </div>
+
+
+
 
 </ion-content>

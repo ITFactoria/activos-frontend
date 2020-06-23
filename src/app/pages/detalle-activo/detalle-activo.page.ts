@@ -41,8 +41,8 @@ export class DetalleActivoPage implements OnInit {
     idactivo: '',
     codact: '',
     nomact: '',
-    idimgp: '../../assets/icon/image1.png',
-    idimgd: '../../../assets/icon/image2.png',
+    idimgp: '',
+    idimgd: '',
     fecgar: '',
     latact: '',
     lonact: ''
@@ -121,7 +121,6 @@ export class DetalleActivoPage implements OnInit {
       this.activo.datact.idimgp = '../assets/img/desplumadora.jpg'
       this.activo.datact.idimgd = '../assets/img/desplumadora2.jpeg'
       
-
 
       //Set Map
       mapboxgl.accessToken = 'pk.eyJ1Ijoiam5pbm9pdGZhY3RvcmlhIiwiYSI6ImNrYXd5dTM0eDAxYWcyc2x3cGJiaXFkZngifQ.XnNxv87OQK8EJPcJ-DpTaA';

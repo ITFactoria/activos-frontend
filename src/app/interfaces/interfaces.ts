@@ -57,17 +57,14 @@ export interface caracteristica {
   idcar: number
   nombre: string
   valor: string
-  alertas: alerta[]
+  
 }
 
 
 //Alerta sobre un Componente del activo
-export interface alerta {
-  idalerta: number
+export interface IAlerta {
   aviso: string
-  finicio: string
-  ffin: string
-  nrodias: number
+  
 }
 
 
@@ -98,8 +95,9 @@ export interface ITipcar {
   nomtipc: string;
   idimgtc: string;
   carTcar: ICarTcar[];
-  aleTcar: number;
+  aleTcar: IAlerta[];
 }
+
 
 //Caracteristica: Caraceristica del Tipo Caracterisitica
 export interface ICarTcar {

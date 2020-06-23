@@ -23,7 +23,7 @@ export class ActivoComponent implements OnInit {
     console.log("ACTIVO activoPropietario: ", this.activoPropietario);
   }
 
-  getAssetDetail(idActivo : string){
+  getDetalleActivo(idActivo : string){
     console.log("ACTIVO Activo: ", this.activoPropietario);
     console.log("ACTIVO Detail Activo: ", idActivo);
     

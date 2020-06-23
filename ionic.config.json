@@ -1,5 +1,7 @@
 {
   "name": "activos",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

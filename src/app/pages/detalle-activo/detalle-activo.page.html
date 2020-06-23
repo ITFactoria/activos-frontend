@@ -29,7 +29,6 @@
       </ion-slide>
       <ion-slide class="image-slide" style="background-image: url('{{activo.datact.idimgd}}')">
       </ion-slide>
-
     </ion-slides>
 
     <!-- Map -->
@@ -39,7 +38,6 @@
 
     <ion-item>
       <div id='map'>
-        aqui debe estar el mapa
       </div>
     </ion-item>
 
@@ -47,6 +45,11 @@
 
     
     <!-- Part List -->
+
+    <ion-item>
+      <ion-label>Componentes</ion-label>
+    </ion-item>
+
     <app-partes-activo [idActivo]="idActivo" [partesActivo]="partesActivo"></app-partes-activo>
     <!-- <app-partes-activo [activo]="activo"></app-partes-activo> -->
 

@@ -2,12 +2,10 @@
 <div>
   <ion-list>
     <ion-item-sliding>
-      <ion-item button (click) ="getAssetDetail(activoPropietario.idact)" lines="none">
+      <ion-item button (click) ="getDetalleActivo(activoPropietario.idact)" lines="none">
         <ion-label>
-          {{activoPropietario.nombreactivo}}
-        </ion-label>
-        <ion-label slot="end" text-right>
-          {{activoPropietario.direccion}}
+          <h4>{{activoPropietario.clave}} -  {{activoPropietario.nombreactivo}}</h4>
+          <h5>{{activoPropietario.direccion}}</h5>
         </ion-label>
       </ion-item>
 
@@ -18,7 +16,7 @@
    -->
      
       <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+        <ion-item-option (click)="unread(item)">Descargar</ion-item-option>
       </ion-item-options>
 
     </ion-item-sliding>
