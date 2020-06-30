@@ -50,11 +50,12 @@ export class Tab1Page implements OnInit {
 
   async loadUserData() {
     this.datosUsuario = (await this._storage.get('datosUsuario')) || [];
-    console.log("datos usuario async: ", this.datosUsuario);
+    console.log("TAB1: datos usuario async: ", this.datosUsuario);
   }
 
   async loadAssets() {
     this.activosPropietario = (await this._storage.get('activosPropietario')) || [];
+    console.log("TAB1: datos activo async: ", this.activosPropietario )
   }
 
   logout() {

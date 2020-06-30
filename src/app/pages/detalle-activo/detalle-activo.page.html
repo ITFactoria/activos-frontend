@@ -14,14 +14,61 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- <div class="ion-text-center">
+  <ion-toolbar>
+    <ion-title>
+      
+    </ion-title>
+  </ion-toolbar>
+</div> -->
+
+<div>
+  <ion-toolbar color="dark">
+    <ion-title>{{activo.datact.codact}} - {{activo.datact.nomact}}</ion-title>
+    <!-- <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="tertiary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="images"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="location"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+
+</div>
+<!-- <div>
+  <ion-toolbar>
+    <ion-segment scrollable (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="camera">
+        <ion-icon name="images"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        <ion-icon name="location"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="list">
+        <ion-icon name="list"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</div> -->
+
 <ion-content>
 
   <div class="asset">
-    <ion-item>
-      <ion-label>
-        <h2>{{activo.datact.nomact}}</h2>
-      </ion-label>
-    </ion-item>
 
     <!-- Images -->
     <ion-slides pager="true">
@@ -43,7 +90,7 @@
 
     <!-- <app-mapa [activo]="activo"></app-mapa> -->
 
-    
+
     <!-- Part List -->
 
     <ion-item>
@@ -54,4 +101,34 @@
     <!-- <app-partes-activo [activo]="activo"></app-partes-activo> -->
 
   </div>
+
+  
+
+
+
 </ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="images"></ion-icon>
+      <ion-label>Imágenes</ion-label>
+      <ion-badge>2</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="location"></ion-icon>
+      <ion-label>Ubicación</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="list">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>Partes</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Acerca</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    
+
     this._activosService.getAsetsByUser(this.loginUser.token).subscribe(res => {
       console.log("res: ", res);
       console.log('rol: ', res.rol);
@@ -61,23 +61,28 @@ export class LoginPage implements OnInit {
         this.datosUsuario = res.datCon;
         this.activosPropietario.push(...res.actPro);
         this.activosTecnico.push(...res.actTec);
-        
-        this.saveUserData(this.datosUsuario);
-        this.saveAssets(this.activosPropietario);
-        this._navcrtl.navigateRoot(['main/tabs/tab1', this.datosUsuario], { animated: true });
-        //this._navcrtl.navigateForward(['main/tabs/tab1', this.datosUsuario], { animated: true });
 
+        //Los datos del usuario se guardan localmente para ser consultados en la pagina de activos
+        this.saveUserData(this.datosUsuario);
+
+        //Los activos del usuario se guardan localmente para ser consultados en la pagina de activos
+        this.saveAssets(this.activosPropietario);
         
-        //this._router.navigate(['main/tabs/tab1', nombreContacto])
+        
+        this._navcrtl.navigateRoot(['main/tabs/tab1', this.datosUsuario], { animated: true });
+
 
       }
     })
   }
 
+
+  //Los datos del usuario se guardan localmente para ser consultados en la pagina de activos
   async saveUserData(datosUsuario: DatCon) {
     await this._storage.set('datosUsuario', datosUsuario);
   }
 
+  //Los activos del usuario se guardan localmente para ser consultados en la pagina de activos
   async saveAssets(activosPropietario: ActPro[]) {
     await this._storage.set('activosPropietario', activosPropietario);
   }

@@ -13,15 +13,8 @@ export class ActivosComponent implements OnInit {
   //@Input() activosTecnico : ActTec[] = [];
   @Input() activosPropietario : ActPro[] = [];
 
-  
-
   constructor() { }
 
-  ngOnInit() {
-    //console.log("ACTIVOS ActivosTecnico: ", this.activosTecnico);
-    console.log("ACTIVOS ActivosPropietario: ", this.activosPropietario);
-    
-    
-  }
+  ngOnInit() {}
 
 }
